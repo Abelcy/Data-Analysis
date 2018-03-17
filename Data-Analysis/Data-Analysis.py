@@ -109,7 +109,10 @@ def fwrite(file,Positions,Label):
         writer.writerow(Label)
         for Data in Positions:
             for row in Data:
-                writer.writerow(row)
+                try:
+                    writer.writerow(row)
+                except UnicodeEncodeError as e1:  
+                    writer.writerow(['UnicodeEncodeError']) 
             
 def Mysql(city,kd,Positions):
     '''
